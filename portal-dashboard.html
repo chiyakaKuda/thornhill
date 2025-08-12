@@ -220,7 +220,7 @@
                 <h1 class="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Welcome Back, Godfrey!</h1>
                 
                 <!-- Fees Warning Alert -->
-                <div id="fees-warning" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                <div id="fees-warning" class="hidden bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
                             <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -229,7 +229,7 @@
                         </div>
                         <div class="ml-3">
                             <h3 class="text-sm font-medium text-yellow-800">Outstanding Fees Notice</h3>
-                            <p class="text-sm text-yellow-700 mt-1">You have outstanding fees of ZWL 125,000. Results and academic records are restricted until fees are cleared.</p>
+                            <p class="text-sm text-yellow-700 mt-1">You have outstanding fees of ZWL 0. Results and academic records are restricted until fees are cleared.</p>
                         </div>
                     </div>
                 </div>
@@ -268,15 +268,15 @@
                     
                     <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 stats-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
                         <div class="flex items-center">
-                            <div class="p-2 sm:p-3 bg-yellow-100 rounded-full">
-                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            <div class="p-2 sm:p-3 bg-green-100 rounded-full">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
                             <div class="ml-3 sm:ml-4">
                                 <p class="text-xs sm:text-sm font-medium text-gray-600">Outstanding Fees</p>
-                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">ZWL 125,000</p>
-                                <p class="text-xs text-red-500">Payment Required</p>
+                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">ZWL 0</p>
+                                <p class="text-xs text-green-500">Fees Cleared</p>
                             </div>
                         </div>
                     </div>
@@ -362,7 +362,7 @@
                 <h1 class="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Academic Results</h1>
                 
                 <!-- Fees Restriction Notice -->
-                <div id="results-restriction" class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                <div id="results-restriction" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
                             <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
@@ -394,7 +394,7 @@
                     </div>
                     
                     <div class="overflow-x-auto">
-                        <div id="results-table" class="hidden">
+                        <div id="results-table">
                             <!-- Results Summary -->
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                                 <div class="bg-blue-50 rounded-lg p-4 text-center">
@@ -504,7 +504,7 @@
                         </table>
                     </div>
                         
-                        <div id="results-restricted" class="text-center py-12">
+                        <div id="results-restricted" class="hidden text-center py-12">
                             <div class="mx-auto w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mb-4">
                                 <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
@@ -640,9 +640,9 @@
                         <form class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Amount to Pay</label>
-                                <input type="number" id="payment-amount" value="125000" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <input type="number" id="payment-amount" value="0" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
                                 <p class="text-xs text-gray-500 mt-1">Amount in Zimbabwean Dollars (ZWL)</p>
-                                <p class="text-xs text-blue-600 mt-1">Outstanding Balance: ZWL <span id="outstanding-balance">125,000</span></p>
+                                <p class="text-xs text-blue-600 mt-1">Outstanding Balance: ZWL <span id="outstanding-balance">0</span></p>
                             </div>
                             
                             <div>
@@ -1010,8 +1010,8 @@
         
         // Global variables and functions
         let studentData = {
-            outstandingFees: 125000,
-            hasOutstandingFees: true,
+            outstandingFees: 0,
+            hasOutstandingFees: false,
             results: {
                 term1: {
                     subjects: [
@@ -1048,35 +1048,7 @@
             };
         }
         
-        // Floating icons functionality
-        function showFloatingIcons(type, count = 3) {
-            const icons = {
-                success: ['🎉', '🏆', '⭐', '💯', '🎊'],
-                failure: ['😞', '😔', '😢', '💔', '😭'],
-                money: ['💰', '💵', '💸', '🪙', '💎']
-            };
-            
-            const iconSet = icons[type] || icons.success;
-            
-            for (let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    const icon = document.createElement('div');
-                    icon.className = `floating-icon ${type}-icon`;
-                    icon.textContent = iconSet[Math.floor(Math.random() * iconSet.length)];
-                    icon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-                    icon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                    
-                    document.body.appendChild(icon);
-                    
-                    // Remove icon after animation
-                    setTimeout(() => {
-                        if (icon.parentNode) {
-                            icon.parentNode.removeChild(icon);
-                        }
-                    }, 3000);
-                }, i * 200);
-            }
-        }
+        
         
         // Initialize with overview section
         document.addEventListener('DOMContentLoaded', function() {
@@ -1128,45 +1100,8 @@
                 animateDashboardStats();
             }, 500);
             
-            // Student data and fees management
-            let studentData = {
-                outstandingFees: 125000,
-                hasOutstandingFees: true,
-                results: {
-                    term1: {
-                        subjects: [
-                            { name: "Mathematics", grade: "A", mark: 85, comment: "Excellent work! Strong problem-solving skills.", position: 3 },
-                            { name: "English Language", grade: "A", mark: 88, comment: "Outstanding performance in literature and composition.", position: 2 },
-                            { name: "English Literature", grade: "B", mark: 78, comment: "Good understanding of texts, needs more analysis.", position: 5 },
-                            { name: "Physics", grade: "A", mark: 82, comment: "Excellent practical skills and theoretical knowledge.", position: 4 },
-                            { name: "Chemistry", grade: "B", mark: 75, comment: "Good laboratory work, improve calculations.", position: 7 },
-                            { name: "Biology", grade: "A", mark: 87, comment: "Outstanding in practical work and theory.", position: 1 },
-                            { name: "History", grade: "B", mark: 76, comment: "Good historical analysis, improve essay writing.", position: 6 },
-                            { name: "Geography", grade: "C", mark: 68, comment: "Satisfactory work, needs more map reading practice.", position: 8 },
-                            { name: "Shona", grade: "A", mark: 90, comment: "Excellent command of language and literature.", position: 1 },
-                            { name: "Computer Studies", grade: "A", mark: 89, comment: "Outstanding programming and practical skills.", position: 2 }
-                        ],
-                        classAverage: 72.5,
-                        studentAverage: 81.8,
-                        studentPosition: 3,
-                        totalStudents: 45,
-                        passRate: 85.2
-                    }
-                }
-            };
-            
-            // Calculate pass rate and success indicators
-            function calculateSuccessIndicators() {
-                const results = studentData.results.term1;
-                const subjectsWithA = results.subjects.filter(subject => subject.grade === "A").length;
-                const passRate = results.studentAverage;
-                
-                return {
-                    hasHighPassRate: passRate >= 70,
-                    hasFiveAs: subjectsWithA >= 5,
-                    isSuccessful: passRate >= 70 && subjectsWithA >= 5
-                };
-            }
+            // Initialize fees restriction
+            updateFeesRestriction();
             
             // Fees restriction functionality
             function updateFeesRestriction() {
@@ -1285,82 +1220,72 @@
                     }, 2000);
                 });
             }
+        
+        // Update fees display
+        function updateFeesDisplay() {
+            console.log('updateFeesDisplay called - Outstanding fees:', studentData.outstandingFees);
             
-            // Update fees display
-            function updateFeesDisplay() {
-                console.log('updateFeesDisplay called - Outstanding fees:', studentData.outstandingFees);
-                
-                // Update stats card
-                const feesElement = document.querySelector('.stats-card:nth-child(3) .stats-number');
-                if (feesElement) {
-                    feesElement.textContent = `ZWL ${studentData.outstandingFees.toLocaleString()}`;
-                    console.log('Updated stats card to:', feesElement.textContent);
-                }
-                
-                // Update outstanding balance in payment section
-                const outstandingBalance = document.getElementById('outstanding-balance');
-                if (outstandingBalance) {
-                    outstandingBalance.textContent = studentData.outstandingFees.toLocaleString();
-                    console.log('Updated outstanding balance to:', outstandingBalance.textContent);
-                }
-                
-                // Update payment amount field
-                const paymentAmount = document.getElementById('payment-amount');
-                if (paymentAmount) {
-                    paymentAmount.value = studentData.outstandingFees;
-                }
-                
-                // Update fees warning
-                const feesWarning = document.getElementById('fees-warning');
-                if (feesWarning) {
-                    if (studentData.hasOutstandingFees) {
-                        feesWarning.querySelector('p').textContent = `You have outstanding fees of ZWL ${studentData.outstandingFees.toLocaleString()}. Results and academic records are restricted until fees are cleared.`;
-                        feesWarning.classList.remove('hidden');
-                    } else {
-                        feesWarning.classList.add('hidden');
-                    }
-                }
-                
-                // Update stats card text
-                const feesCardText = document.querySelector('.stats-card:nth-child(3) .text-sm');
-                if (feesCardText) {
-                    if (studentData.hasOutstandingFees) {
-                        feesCardText.textContent = 'Payment Required';
-                    } else {
-                        feesCardText.textContent = 'Fees Cleared';
-                    }
+            // Update stats card
+            const feesElement = document.querySelector('.stats-card:nth-child(3) .stats-number');
+            if (feesElement) {
+                feesElement.textContent = `ZWL ${studentData.outstandingFees.toLocaleString()}`;
+                console.log('Updated stats card to:', feesElement.textContent);
+            }
+            
+            // Update outstanding balance in payment section
+            const outstandingBalance = document.getElementById('outstanding-balance');
+            if (outstandingBalance) {
+                outstandingBalance.textContent = studentData.outstandingFees.toLocaleString();
+                console.log('Updated outstanding balance to:', outstandingBalance.textContent);
+            }
+            
+            // Update payment amount field
+            const paymentAmount = document.getElementById('payment-amount');
+            if (paymentAmount) {
+                paymentAmount.value = studentData.outstandingFees;
+            }
+            
+            // Update fees warning
+            const feesWarning = document.getElementById('fees-warning');
+            if (feesWarning) {
+                if (studentData.hasOutstandingFees) {
+                    feesWarning.querySelector('p').textContent = `You have outstanding fees of ZWL ${studentData.outstandingFees.toLocaleString()}. Results and academic records are restricted until fees are cleared.`;
+                    feesWarning.classList.remove('hidden');
+                } else {
+                    feesWarning.classList.add('hidden');
                 }
             }
             
-            // Floating icons functionality
-            function showFloatingIcons(type, count = 3) {
-                const icons = {
-                    success: ['🎉', '🏆', '⭐', '💯', '🎊'],
-                    failure: ['😞', '😔', '😢', '💔', '😭'],
-                    money: ['💰', '💵', '💸', '🪙', '💎']
-                };
-                
-                const iconSet = icons[type] || icons.success;
-                
-                for (let i = 0; i < count; i++) {
-                    setTimeout(() => {
-                        const icon = document.createElement('div');
-                        icon.className = `floating-icon ${type}-icon`;
-                        icon.textContent = iconSet[Math.floor(Math.random() * iconSet.length)];
-                        icon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-                        icon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                        
-                        document.body.appendChild(icon);
-                        
-                        // Remove icon after animation
-                        setTimeout(() => {
-                            if (icon.parentNode) {
-                                icon.parentNode.removeChild(icon);
-                            }
-                        }, 3000);
-                    }, i * 200);
+            // Update stats card text
+            const feesCardText = document.querySelector('.stats-card:nth-child(3) .text-sm');
+            if (feesCardText) {
+                if (studentData.hasOutstandingFees) {
+                    feesCardText.textContent = 'Payment Required';
+                } else {
+                    feesCardText.textContent = 'Fees Cleared';
                 }
             }
+        }
+        
+        // Fees restriction functionality
+        function updateFeesRestriction() {
+            const resultsTable = document.getElementById('results-table');
+            const resultsRestricted = document.getElementById('results-restricted');
+            const resultsRestriction = document.getElementById('results-restriction');
+            const feesWarning = document.getElementById('fees-warning');
+            
+            if (studentData.hasOutstandingFees) {
+                if (resultsTable) resultsTable.classList.add('hidden');
+                if (resultsRestricted) resultsRestricted.classList.remove('hidden');
+                if (resultsRestriction) resultsRestriction.classList.remove('hidden');
+                if (feesWarning) feesWarning.classList.remove('hidden');
+            } else {
+                if (resultsTable) resultsTable.classList.remove('hidden');
+                if (resultsRestricted) resultsRestricted.classList.add('hidden');
+                if (resultsRestriction) resultsRestriction.classList.add('hidden');
+                if (feesWarning) feesWarning.classList.add('hidden');
+            }
+        }
             
             // Show floating icons based on results
             function showResultsIcons() {
