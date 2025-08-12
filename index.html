@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thornhill High School, Gweru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#351717',
+              accent: '#FFD700',
+            },
+            fontFamily: {
+              ubuntu: ["Ubuntu", 'sans-serif'],
+            },
+            keyframes: {
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideIn: {
+                '0%': { opacity: '0', transform: 'translateX(30px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              slideInLeft: {
+                '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(30px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              scaleIn: {
+                '0%': { opacity: '0', transform: 'scale(0.8)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              bounceIn: {
+                '0%': { opacity: '0', transform: 'scale(0.3)' },
+                '50%': { opacity: '1', transform: 'scale(1.05)' },
+                '70%': { transform: 'scale(0.9)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(50px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              zoomIn: {
+                '0%': { opacity: '0', transform: 'scale(0.5)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              flipIn: {
+                '0%': { opacity: '0', transform: 'perspective(400px) rotateY(90deg)' },
+                '40%': { transform: 'perspective(400px) rotateY(-20deg)' },
+                '60%': { transform: 'perspective(400px) rotateY(10deg)' },
+                '80%': { transform: 'perspective(400px) rotateY(-5deg)' },
+                '100%': { opacity: '1', transform: 'perspective(400px) rotateY(0deg)' },
+              },
+            },
+            animation: {
+              'fade-up': 'fadeUp 0.8s ease-out both',
+              'fade-in': 'fadeIn 0.8s ease-out both',
+              'slide-in': 'slideIn 0.8s ease-out both',
+              'slide-in-left': 'slideInLeft 0.8s ease-out both',
+              'slide-in-right': 'slideInRight 0.8s ease-out both',
+              'scale-in': 'scaleIn 0.8s ease-out both',
+              'bounce-in': 'bounceIn 1s ease-out both',
+              'slide-up': 'slideUp 0.8s ease-out both',
+              'zoom-in': 'zoomIn 0.8s ease-out both',
+              'flip-in': 'flipIn 1s ease-out both',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-ubuntu text-gray-900 selection:bg-accent selection:text-primary">
+    <!-- Navbar -->
+    <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+      <nav class="mx-auto grid max-w-7xl grid-cols-3 items-center px-5 py-4 lg:px-6 lg:py-5">
+        <!-- Mobile: Hamburger -->
+        <button
+          id="mobile-open"
+          class="flex h-10 w-10 items-center justify-center rounded-lg text-white/90 lg:hidden"
+          aria-label="Open menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-7 w-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+
+        <!-- Desktop: Left links -->
+        <ul class="hidden items-center gap-10 justify-self-start lg:flex">
+          <li><a href="#about" class="px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent">About</a></li>
+          <li><a href="#admissions" class="px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent">Admissions</a></li>
+          <li><a href="#academics" class="px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent">Academics</a></li>
+        </ul>
+        <!-- Logo -->
+        <a href="#home" class="shrink-0 justify-self-center">
+          <img src="assets/img/logo.png" alt="Thornhill High School" class="h-20 w-auto select-none lg:h-24" />
+        </a>
+
+        <!-- Desktop: Right links -->
+        <ul class="hidden items-center gap-10 justify-self-end lg:flex">
+          <li><a href="#research" class="px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent">Research</a></li>
+          <li class="relative group">
+            <button class="inline-flex items-center gap-1 px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent" aria-haspopup="true" aria-expanded="false">
+              Pages
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M12 14.25a.75.75 0 01-.53-.22l-4.5-4.5a.75.75 0 111.06-1.06L12 12.44l3.97-3.97a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-.53.22z" clip-rule="evenodd"/></svg>
+            </button>
+            <div class="invisible absolute right-0 top-full z-40 mt-2 w-44 rounded-lg border border-white/10 bg-primary/95 p-2 opacity-0 shadow-lg backdrop-blur transition group-hover:visible group-hover:opacity-100">
+              <a href="#news" class="block rounded-md px-3 py-2 text-sm text-white/90 hover:bg-white/10 hover:text-accent">News</a>
+              <a href="#life" class="block rounded-md px-3 py-2 text-sm text-white/90 hover:bg-white/10 hover:text-accent">Student Life</a>
+            </div>
+          </li>
+          <li><a href="#contact" class="px-2 py-1 text-lg md:text-xl font-medium text-accent/90 transition hover:text-accent">Contact</a></li>
+          <li>
+            <a href="portal-login.html" class="rounded-full bg-accent px-5 py-2 text-base md:text-lg font-semibold text-primary shadow-sm transition hover:bg-accent/90">
+               Portal
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile: placeholder for alignment -->
+        <div class="h-10 w-10 lg:hidden"></div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="invisible pointer-events-none fixed inset-x-0 top-0 z-40 h-screen translate-y-[-8px] bg-primary/98 opacity-0 backdrop-blur-md transition duration-300 lg:hidden">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+          <a href="#home"><img src="assets/img/logo.png" alt="Thornhill" class="h-10" /></a>
+          <button id="mobile-close" class="rounded-lg p-2 text-white/90" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-7 w-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <ul class="mx-auto mt-6 max-w-7xl space-y-2 px-6 text-lg">
+          <li><a href="#about" class="block rounded-lg px-3 py-2 text-accent">About</a></li>
+          <li><a href="#admissions" class="block rounded-lg px-3 py-2 text-white">Admissions</a></li>
+          <li><a href="#academics" class="block rounded-lg px-3 py-2 text-white">Academics</a></li>
+          <li><a href="#research" class="block rounded-lg px-3 py-2 text-white">Research</a></li>
+          <li class="pt-2">
+            <div class="rounded-lg bg-white/5 p-2">
+              <div class="px-3 pb-1 text-sm text-accent">Pages</div>
+              <a href="#news" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">News</a>
+              <a href="#life" class="block rounded-md px-3 py-2 text-white/90 hover:bg-white/10">Student Life</a>
+            </div>
+          </li>
+          <li><a href="#contact" class="block rounded-lg px-3 py-2 text-white">Contact</a></li>
+          <li>
+            <a href="portal-login.html" class="mt-2 block rounded-full bg-accent px-4 py-2 text-center font-semibold text-primary">Portal</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative min-h-screen w-full">
+      <!-- Hero Carousel -->
+      <div id="default-carousel" class="relative w-full h-screen" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-full overflow-hidden">
+          <!-- Item 1: Welcome -->
+          <div class="duration-700 ease-in-out" data-carousel-item>
+            <div class="absolute inset-0">
+              <img src="/assets/img/1.jpg" alt="School Building" class="absolute block w-full h-full object-cover blur-sm" />
+              <div class="absolute inset-0 bg-primary/60"></div>
+            </div>
+            <div class="relative z-10 flex h-full items-center justify-center">
+              <div class="mx-auto max-w-7xl px-4 text-center text-white">
+                <img src="assets/img/logo.png" alt="Thornhill Crest" class="mx-auto mb-6 h-28 w-auto opacity-90" />
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                  Excellence Through Knowledge
+                </h1>
+                <p class="mt-4 text-accent text-lg sm:text-xl">Per Spinas Ad Culmina</p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <a href="#academics" class="rounded-full bg-accent px-6 py-3 font-semibold text-primary shadow-lg transition hover:translate-y-[-1px] hover:shadow-xl">See Programs</a>
+                  <a href="#about" class="rounded-full border-2 border-accent px-6 py-3 font-semibold text-white transition hover:bg-accent/10">Learn More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Academics -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="absolute inset-0">
+              <img src="/assets/img/2.jpg" alt="Academic Excellence" class="absolute block w-full h-full object-cover blur-sm" />
+              <div class="absolute inset-0 bg-primary/60"></div>
+            </div>
+            <div class="relative z-10 flex h-full items-center justify-center">
+              <div class="mx-auto max-w-7xl px-4 text-center text-white">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                  Academic Excellence
+                </h1>
+                <p class="mt-4 text-accent text-lg sm:text-xl">Nurturing Minds, Building Futures</p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <a href="#academics" class="rounded-full bg-accent px-6 py-3 font-semibold text-primary shadow-lg transition hover:translate-y-[-1px] hover:shadow-xl">Explore Academics</a>
+                  <a href="#admissions" class="rounded-full border-2 border-accent px-6 py-3 font-semibold text-white transition hover:bg-accent/10">Apply Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Student Life -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="absolute inset-0">
+              <img src="/assets/img/3.jpg" alt="Student Life" class="absolute block w-full h-full object-cover blur-sm" />
+              <div class="absolute inset-0 bg-primary/60"></div>
+            </div>
+            <div class="relative z-10 flex h-full items-center justify-center">
+              <div class="mx-auto max-w-7xl px-4 text-center text-white">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                  Vibrant Student Life
+                </h1>
+                <p class="mt-4 text-accent text-lg sm:text-xl">Beyond the Classroom</p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <a href="#life" class="rounded-full bg-accent px-6 py-3 font-semibold text-primary shadow-lg transition hover:translate-y-[-1px] hover:shadow-xl">Discover Activities</a>
+                  <a href="#news" class="rounded-full border-2 border-accent px-6 py-3 font-semibold text-white transition hover:bg-accent/10">Latest News</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Community -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div class="absolute inset-0">
+              <img src="/assets/img/4.jpg" alt="School Community" class="absolute block w-full h-full object-cover blur-sm" />
+              <div class="absolute inset-0 bg-primary/60"></div>
+            </div>
+            <div class="relative z-10 flex h-full items-center justify-center">
+              <div class="mx-auto max-w-7xl px-4 text-center text-white">
+                <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+                  Strong Community
+                </h1>
+                <p class="mt-4 text-accent text-lg sm:text-xl">Building Leaders Together</p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                  <a href="#contact" class="rounded-full bg-accent px-6 py-3 font-semibold text-primary shadow-lg transition hover:translate-y-[-1px] hover:shadow-xl">Join Us</a>
+                  <a href="portal-login.html" class="rounded-full border-2 border-accent px-6 py-3 font-semibold text-white transition hover:bg-accent/10">Student Portal</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex -translate-x-1/2 bottom-8 left-1/2 space-x-3 rtl:space-x-reverse">
+          <button type="button" class="w-3 h-3 rounded-full bg-white hover:bg-white/80 transition" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        </div>
+
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+            <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="bg-white py-20">
+      <div class="mx-auto max-w-4xl px-4">
+        <div class="text-center" data-aos="fade-up">
+          <h2 class="text-4xl font-bold text-primary sm:text-5xl" data-aos="fade-up" data-aos-delay="200">Welcome</h2>
+          <div class="mt-8 space-y-6">
+            <p class="text-lg leading-relaxed text-gray-700 sm:text-xl text-center" data-aos="fade-up" data-aos-delay="400">
+              Welcome to Thornhill High School, where excellence meets opportunity. Our institution has been a cornerstone of academic achievement and character development in Gweru for generations. We believe in nurturing not just the mind, but the whole person - preparing students to become confident, compassionate leaders of tomorrow.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700 sm:text-xl text-center" data-aos="fade-up" data-aos-delay="600">
+              At Thornhill, we combine rigorous academic standards with a supportive community environment. Our dedicated teachers, state-of-the-art facilities, and comprehensive programs ensure that every student has the tools they need to succeed both in the classroom and beyond.
+            </p>
+          </div>
+          <div class="mt-10" data-aos="fade-up" data-aos-delay="800">
+            <p class="text-lg font-medium text-primary text-center">— Thornhill High School Administration</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="bg-gradient-to-br from-gray-50 to-white py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <!-- Section Heading -->
+        <div class="mb-16 text-center">
+          <div data-aos="fade-up">
+            <h1 class="text-4xl font-bold text-primary sm:text-5xl lg:text-6xl">About Thornhill</h1>
+            <p class="mt-4 text-lg text-gray-600">Discover our story, mission, and commitment to excellence</p>
+          </div>
+        </div>
+
+        <!-- Main About Content -->
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="space-y-6" data-aos="fade-right">
+            <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+              <span class="h-2 w-2 rounded-full bg-primary"></span>
+              Established Excellence
+            </div>
+            <h2 class="text-4xl font-bold text-primary sm:text-5xl lg:text-6xl">
+              Shaping Tomorrow's
+              <span class="text-primary">Leaders</span>
+            </h2>
+            <p class="text-lg leading-relaxed text-gray-700">
+              At Thornhill High School, we don't just educate—we inspire. Our institution stands as a beacon of innovation, where traditional values meet cutting-edge learning approaches. We believe every student has the potential to change the world.
+            </p>
+            <div class="grid grid-cols-2 gap-4 pt-4">
+              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                <div class="text-2xl font-bold text-primary">50+</div>
+                <div class="text-sm text-gray-600">Years of Excellence</div>
+              </div>
+              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
+                <div class="text-2xl font-bold text-primary">95%</div>
+                <div class="text-sm text-gray-600">Success Rate</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3 pt-4">
+              <a href="#academics" class="rounded-full bg-primary px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl">Explore Programs</a>
+              <a href="#contact" class="rounded-full border-2 border-primary px-6 py-3 font-semibold text-primary transition hover:bg-primary hover:text-white">Get in Touch</a>
+            </div>
+          </div>
+          
+          <div class="relative" data-aos="fade-left">
+            <div class="relative overflow-hidden rounded-2xl bg-primary/5 p-8">
+              <div class="absolute -top-4 -right-4 h-24 w-24 rounded-full bg-primary/10"></div>
+              <div class="absolute -bottom-4 -left-4 h-16 w-16 rounded-full bg-primary/10"></div>
+              <div class="relative z-10 space-y-6">
+                <div class="flex items-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                      <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007 5.77V9.5a.75.75 0 01-1.5 0V5.5a.75.75 0 01.2-.5z"/>
+                      <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.84 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 11-3 0v-1.27a1.5 1.5 0 011.5-1.5z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold text-primary">Academic Excellence</h3>
+                    <p class="text-gray-600">Rigorous curriculum with modern teaching methods</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                      <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 01-1.019-4.38z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold text-primary">Character Development</h3>
+                    <p class="text-gray-600">Building leaders with integrity and compassion</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4" data-aos="fade-up" data-aos-delay="600">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+                      <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-semibold text-primary">Community Focus</h3>
+                    <p class="text-gray-600">Creating a supportive and inclusive environment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="mt-20 grid gap-8 lg:grid-cols-2">
+          <div class="rounded-2xl bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+            <div class="mb-6 flex items-center gap-3">
+              <div class="h-8 w-1 rounded-full bg-primary"></div>
+              <h3 class="text-2xl font-bold text-primary">Our Mission</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              To provide exceptional education that empowers students to achieve their full potential, develop strong character, and become responsible global citizens who contribute positively to society.
+            </p>
+          </div>
+          
+          <div class="rounded-2xl bg-white p-8 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+            <div class="mb-6 flex items-center gap-3">
+              <div class="h-8 w-1 rounded-full bg-primary"></div>
+              <h3 class="text-2xl font-bold text-primary">Our Vision</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              To be the leading educational institution in Zimbabwe, recognized for academic excellence, innovative teaching methods, and the development of well-rounded individuals who excel in all aspects of life.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academics -->
+    <section id="academics" class="bg-white py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl font-bold text-primary sm:text-5xl" data-aos="fade-up">Academic Programs</h2>
+          <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">Comprehensive curriculum designed for excellence and future success</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">Sciences</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">STEM</span>
+            </div>
+            <p class="mt-3 text-gray-600">Physics, Chemistry, Biology with modern laboratory facilities.</p>
+          </a>
+
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">Mathematics</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">Core</span>
+            </div>
+            <p class="mt-3 text-gray-600">Advanced mathematics with problem-solving focus.</p>
+          </a>
+
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">Languages</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">Arts</span>
+            </div>
+            <p class="mt-3 text-gray-600">English, Shona, and additional language options.</p>
+          </a>
+
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">Humanities</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">Social</span>
+            </div>
+            <p class="mt-3 text-gray-600">History, Geography, and Social Studies.</p>
+          </a>
+
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="500">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">Sports</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">Athletics</span>
+            </div>
+            <p class="mt-3 text-gray-600">Competitive sports with strong coaching and facilities.</p>
+          </a>
+
+          <a href="#" class="group transform-gpu rounded-xl border border-transparent bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:rotate-1 hover:scale-[1.02] hover:shadow-lg hover:border-accent" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex items-center justify-between">
+              <h3 class="text-xl font-semibold text-primary">ICT</h3>
+              <span class="rounded-full bg-accent/20 px-3 py-1 text-sm text-primary">Tech</span>
+            </div>
+            <p class="mt-3 text-gray-600">Modern computer labs and coding programs for digital literacy.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Life Instagram Style -->
+    <section id="life" class="bg-gradient-to-br from-gray-50 to-white py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl font-bold text-primary sm:text-5xl" data-aos="fade-up">Student Life</h2>
+          <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">A glimpse into our vibrant campus community through the eyes of our students</p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Instagram Post 1: Sports -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basketball Team Victory" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Sports</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="247">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">247</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">23</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_sports</span> 
+                  🏀 Championship victory! Our basketball team dominated the finals with incredible teamwork and determination. Proud of every player who gave their all! #ThornhillPride #BasketballChampions #TeamSpirit
+                </p>
+                <p class="mt-2 text-xs text-gray-500">2 hours ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram Post 2: Arts & Culture -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Arts</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="189">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">189</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">15</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_arts</span> 
+                  🎨 Our annual art exhibition was a huge success! Students showcased incredible talent across painting, sculpture, and digital art. The creativity and passion on display was truly inspiring! #ArtExhibition #StudentArtists #CreativeMinds
+                </p>
+                <p class="mt-2 text-xs text-gray-500">5 hours ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram Post 3: Academic Achievement -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Academic Awards" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Academics</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="312">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">312</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">28</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_academics</span> 
+                  🏆 Academic Excellence Awards Ceremony! Celebrating our top performers who achieved outstanding results. Hard work, dedication, and perseverance truly pay off! #AcademicExcellence #StudentAchievement #ProudMoment
+                </p>
+                <p class="mt-2 text-xs text-gray-500">1 day ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram Post 4: Community Service -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Service" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Service</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="156">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">156</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">12</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_service</span> 
+                  🤝 Community service day was amazing! Students volunteered at local orphanages and cleaned up the neighborhood. Making a positive impact in our community! #CommunityService #GivingBack #SocialResponsibility
+                </p>
+                <p class="mt-2 text-xs text-gray-500">2 days ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram Post 5: Music & Drama -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music Performance" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Music</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="203">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">203</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">19</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_music</span> 
+                  🎵 Spring Concert was absolutely magical! Our talented musicians and performers delivered an unforgettable evening of classical and contemporary music. The audience was spellbound! #SpringConcert #MusicalTalent #Performance
+                </p>
+                <p class="mt-2 text-xs text-gray-500">3 days ago</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram Post 6: Science Fair -->
+          <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="600">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science Fair" class="h-64 w-full rounded-t-2xl object-cover" />
+              <div class="absolute top-3 left-3">
+                <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Science</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <!-- Engagement Icons -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                  <button class="like-btn flex items-center gap-1 text-gray-500 transition hover:text-red-500" data-likes="178">
+                    <svg class="like-icon h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span class="like-count text-sm font-medium">178</span>
+                  </button>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    <span class="text-sm font-medium">14</span>
+                  </div>
+                  <div class="flex items-center gap-1 text-gray-500">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1">
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                  <div class="h-2 w-2 rounded-full bg-gray-400"></div>
+                </div>
+              </div>
+              
+              <!-- Caption -->
+              <div class="mt-3">
+                <p class="text-sm text-gray-900">
+                  <span class="font-semibold text-primary">@thornhill_science</span> 
+                  🔬 Science Fair 2024 was incredible! Students presented innovative projects from renewable energy solutions to medical breakthroughs. The future of science is bright at Thornhill! #ScienceFair #Innovation #FutureScientists
+                </p>
+                <p class="mt-2 text-xs text-gray-500">1 week ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Events -->
+    <section id="news" class="bg-gradient-to-br from-gray-50 to-white py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl font-bold text-primary sm:text-5xl" data-aos="fade-up">News & Events</h2>
+          <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">Stay updated with the latest from Thornhill High School</p>
+        </div>
+
+        <div class="grid gap-12 lg:grid-cols-2">
+          <!-- News Section (Left) -->
+                            <div class="space-y-8" data-aos="fade-right">
+                    <div class="flex items-center gap-3 mb-8">
+                      <div class="h-8 w-1 rounded-full bg-primary"></div>
+                      <h3 class="text-2xl font-bold text-primary">Latest News</h3>
+                    </div>
+
+                    <!-- News Item 1 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Academic Excellence" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">ACADEMICS</span>
+                  <span class="text-xs text-gray-500">15 MARCH, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Academic Excellence Awards Ceremony</h4>
+                <p class="mt-2 text-sm text-gray-600">Celebrating outstanding achievements and recognizing the hard work of our exceptional students.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Read More
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+                                <!-- News Item 2 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sports Achievement" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">SPORTS</span>
+                  <span class="text-xs text-gray-500">12 MARCH, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Basketball Team Wins Regional Championship</h4>
+                <p class="mt-2 text-sm text-gray-600">Our basketball team dominated the regional finals with incredible teamwork and determination.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Read More
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+                                <!-- News Item 3 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Art Exhibition" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">ARTS</span>
+                  <span class="text-xs text-gray-500">10 MARCH, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Annual Art Exhibition Showcases Student Talent</h4>
+                <p class="mt-2 text-sm text-gray-600">Students displayed incredible creativity across painting, sculpture, and digital art mediums.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Read More
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+                            <!-- Events Section (Right) -->
+                  <div class="space-y-8" data-aos="fade-left">
+                    <div class="flex items-center gap-3 mb-8">
+                      <div class="h-8 w-1 rounded-full bg-primary"></div>
+                      <h3 class="text-2xl font-bold text-primary">Upcoming Events</h3>
+                    </div>
+
+                    <!-- Event Item 1 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Spring Concert" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">MUSIC</span>
+                  <span class="text-xs text-gray-500">25 MARCH, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Spring Concert & Musical Performance</h4>
+                <p class="mt-2 text-sm text-gray-600">Join us for an evening of classical and contemporary music performed by our talented students.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Register Now
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+                                <!-- Event Item 2 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Science Fair" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">SCIENCE</span>
+                  <span class="text-xs text-gray-500">30 MARCH, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Annual Science Fair & Innovation Expo</h4>
+                <p class="mt-2 text-sm text-gray-600">Discover groundbreaking projects from renewable energy to AI applications by our future scientists.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Register Now
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+                                <!-- Event Item 3 -->
+                    <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="600">
+              <div class="flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Debate Competition" class="h-24 w-24 rounded-xl object-cover" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">DEBATE</span>
+                  <span class="text-xs text-gray-500">5 APRIL, 2025</span>
+                </div>
+                <h4 class="text-lg font-bold text-gray-900 group-hover:text-primary transition">Inter-School Debate Championship</h4>
+                <p class="mt-2 text-sm text-gray-600">Witness the power of words as our debate team competes against top schools in the region.</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
+                  Register Now
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+                        <!-- View All Button -->
+                <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="700">
+                  <a href="#" class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl">
+                    View All News & Events
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-gradient-to-br from-gray-50 to-white py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl font-bold text-primary sm:text-5xl" data-aos="fade-up">Get in Touch</h2>
+          <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="200">We'd love to hear from you and answer any questions you may have</p>
+        </div>
+
+        <div class="grid gap-12 lg:grid-cols-2">
+          <!-- Message Form (Left) -->
+          <div data-aos="fade-right">
+            <div class="rounded-2xl bg-white p-8 shadow-lg">
+              <h3 class="text-2xl font-bold text-primary mb-4">Send us a message</h3>
+              <p class="text-gray-600 mb-8">
+                Do you have a question about admissions? Need information about our programs? Or want to learn more about Thornhill High School? Feel free to contact us and we'll get back to you as soon as possible.
+              </p>
+              
+              <form class="space-y-6">
+                <div class="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label class="mb-2 block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" placeholder="Enter your first name" class="w-full rounded-lg border-gray-300 px-4 py-3 focus:border-primary focus:ring-primary" />
+                  </div>
+                  <div>
+                    <label class="mb-2 block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" placeholder="Enter your last name" class="w-full rounded-lg border-gray-300 px-4 py-3 focus:border-primary focus:ring-primary" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="mb-2 block text-sm font-medium text-gray-700">Email</label>
+                  <input type="email" placeholder="Enter your email" class="w-full rounded-lg border-gray-300 px-4 py-3 focus:border-primary focus:ring-primary" />
+                </div>
+                
+                <div>
+                  <label class="mb-2 block text-sm font-medium text-gray-700">Contact Details</label>
+                  <div class="flex gap-2">
+                    <select class="rounded-lg border-gray-300 px-3 py-3 focus:border-primary focus:ring-primary">
+                      <option>+263</option>
+                      <option>+27</option>
+                      <option>+1</option>
+                    </select>
+                    <input type="tel" placeholder="Enter your contact number" class="flex-1 rounded-lg border-gray-300 px-4 py-3 focus:border-primary focus:ring-primary" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="mb-2 block text-sm font-medium text-gray-700">Message</label>
+                  <textarea rows="5" placeholder="Enter your message" class="w-full rounded-lg border-gray-300 px-4 py-3 focus:border-primary focus:ring-primary"></textarea>
+                </div>
+                
+                <button type="button" class="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl">
+                  Send a Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Contact Information (Right) -->
+          <div data-aos="fade-left">
+            <div class="rounded-2xl bg-primary p-8 text-white shadow-lg">
+              <h3 class="text-2xl font-bold mb-6">Hi! We are always here to help you.</h3>
+              
+              <div class="space-y-6">
+                <!-- Hotline -->
+                <div class="flex items-center gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-white/80">Hotline</p>
+                    <p class="font-semibold">+263 71 808 3975</p>
+                  </div>
+                </div>
+
+                <!-- SMS/WhatsApp -->
+                <div class="flex items-center gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-white/80">SMS / WhatsApp</p>
+                    <p class="font-semibold">+263 71 808 3975 </p>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="flex items-center gap-4">
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-white/80">Email</p>
+                    <p class="font-semibold">info@thornhill.ac.zw</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Media -->
+              <div class="mt-8 pt-8 border-t border-white/20">
+                <p class="text-sm font-semibold mb-4">Connect with us</p>
+                <div class="flex gap-4">
+                  <a href="#" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition hover:bg-white/30">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.02 3.66 9.19 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.77l-.44 2.9h-2.33V22c4.78-.74 8.44-4.91 8.44-9.93z"/>
+                    </svg>
+                  </a>
+                  <a href="#" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition hover:bg-white/30">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3zm10.5 1.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+                    </svg>
+                  </a>
+                 
+                  <a href="#" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white transition hover:bg-white/30">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.633 7.997c.013.18.013.36.013.54 0 5.49-4.18 11.82-11.82 11.82-2.35 0-4.53-.69-6.36-1.87.33.04.65.05.99.05 1.95 0 3.74-.66 5.17-1.77-1.82-.03-3.36-1.24-3.89-2.9.26.04.52.07.79.07.38 0 .76-.05 1.12-.15-1.9-.38-3.33-2.06-3.33-4.07v-.05c.56.31 1.2.5 1.88.52-1.12-.75-1.87-2.03-1.87-3.49 0-.77.21-1.49.58-2.11 2.11 2.58 5.27 4.27 8.82 4.45-.07-.31-.11-.63-.11-.96 0-2.32 1.88-4.2 4.2-4.2 1.2 0 2.28.5 3.04 1.27.95-.19 1.86-.53 2.68-1-.31.97-.97 1.78-1.82 2.29.84-.1 1.64-.32 2.38-.65-.56.83-1.27 1.56-2.09 2.14z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="mt-12">
+          <div class="overflow-hidden rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+            <iframe
+              title="Thornhill High School Map"
+              src="https://www.google.com/maps?q=Thornhill+High+School+Gweru&output=embed"
+              class="h-96 w-full border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary py-10 text-accent">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 md:grid-cols-4">
+        <div>
+          <img src="assets/img/logo.png" class="h-12" alt="Thornhill" />
+          <p class="mt-4 text-accent/90">Excellence Through Knowledge</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">Quick Links</h4>
+          <ul class="mt-3 space-y-2">
+            <li><a href="#about" class="hover:text-white">About</a></li>
+            <li><a href="#academics" class="hover:text-white">Academics</a></li>
+            <li><a href="#life" class="hover:text-white">Student Life</a></li>
+            <li><a href="#news" class="hover:text-white">News</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Contact</h4>
+          <ul class="mt-3 space-y-2">
+            <li>Gweru, Zimbabwe</li>
+            <li>+263 (71808 3975)</li>
+            <li>info@thornhill.ac.zw</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold">Follow Us</h4>
+          <div class="mt-3 flex gap-3">
+            <a href="#" class="rounded-full bg-white/10 p-2 text-accent transition hover:bg-white/20" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5.02 3.66 9.19 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.77l-.44 2.9h-2.33V22c4.78-.74 8.44-4.91 8.44-9.93z" /></svg>
+            </a>
+            <a href="#" class="rounded-full bg-white/10 p-2 text-accent transition hover:bg-white/20" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M19.633 7.997c.013.18.013.36.013.54 0 5.49-4.18 11.82-11.82 11.82-2.35 0-4.53-.69-6.36-1.87.33.04.65.05.99.05 1.95 0 3.74-.66 5.17-1.77-1.82-.03-3.36-1.24-3.89-2.9.26.04.52.07.79.07.38 0 .76-.05 1.12-.15-1.9-.38-3.33-2.06-3.33-4.07v-.05c.56.31 1.2.5 1.88.52-1.12-.75-1.87-2.03-1.87-3.49 0-.77.21-1.49.58-2.11 2.11 2.58 5.27 4.27 8.82 4.45-.07-.31-.11-.63-.11-.96 0-2.32 1.88-4.2 4.2-4.2 1.2 0 2.28.5 3.04 1.27.95-.19 1.86-.53 2.68-1-.31.97-.97 1.78-1.82 2.29.84-.1 1.64-.32 2.38-.65-.56.83-1.27 1.56-2.09 2.14z" /></svg>
+            </a>
+            <a href="#" class="rounded-full bg-white/10 p-2 text-accent transition hover:bg-white/20" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3zm10.5 1.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-white/10">
+        <p class="mx-auto max-w-7xl px-4 py-6 text-sm">© <span id="year"></span> Thornhill High School. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: false,
+        mirror:true,
+        offset: 100,
+        delay: 0
+      });
+
+      // Navbar color on scroll
+      const header = document.getElementById('site-header');
+      const updateHeader = () => {
+        const scrolled = window.scrollY > 8;
+        header.classList.toggle('bg-primary/95', scrolled);
+        header.classList.toggle('shadow-lg', scrolled);
+      };
+      updateHeader();
+      window.addEventListener('scroll', updateHeader);
+
+      // Mobile menu toggle
+      const mobileMenu = document.getElementById('mobile-menu');
+      document.getElementById('mobile-open').addEventListener('click', () => {
+        mobileMenu.classList.remove('pointer-events-none', 'invisible', 'opacity-0');
+      });
+      document.getElementById('mobile-close').addEventListener('click', () => {
+        mobileMenu.classList.add('pointer-events-none', 'invisible', 'opacity-0');
+      });
+      mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+        mobileMenu.classList.add('pointer-events-none', 'invisible', 'opacity-0');
+      }));
+
+      // Footer year
+      const yearElement = document.getElementById('year');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+
+      // Instagram-style like functionality
+      document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const likeIcon = this.querySelector('.like-icon');
+          const likeCount = this.querySelector('.like-count');
+          
+          if (!likeIcon || !likeCount) return;
+          
+          const currentLikes = parseInt(likeCount.textContent) || 0;
+          
+          if (likeIcon.classList.contains('liked')) {
+            // Unlike
+            likeIcon.classList.remove('liked', 'text-red-500');
+            likeIcon.classList.add('text-gray-500');
+            likeCount.textContent = currentLikes - 1;
+          } else {
+            // Like
+            likeIcon.classList.remove('text-gray-500');
+            likeIcon.classList.add('liked', 'text-red-500');
+            likeCount.textContent = currentLikes + 1;
+            
+            // Add heart animation
+            likeIcon.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+              likeIcon.style.transform = 'scale(1)';
+            }, 200);
+          }
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Add loading animation
+      window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
+  </body>
+  </html>
+
+
