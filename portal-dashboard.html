@@ -44,6 +44,75 @@
             background-color: rgba(255, 215, 0, 0.2);
             border-left: 4px solid #FFD700;
         }
+        
+        /* Stats card animations */
+        .stats-card {
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        
+        .stats-card.aos-animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .stats-number {
+            transition: all 0.3s ease;
+        }
+        
+        /* Pulse effect for stats cards */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(53, 23, 23, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(53, 23, 23, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(53, 23, 23, 0);
+            }
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            animation: pulse-glow 1.5s infinite;
+        }
+        
+        /* Floating Icons */
+        .floating-icon {
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .success-icon {
+            color: #10B981;
+            font-size: 2rem;
+        }
+        
+        .failure-icon {
+            color: #EF4444;
+            font-size: 2rem;
+        }
+        
+        .money-icon {
+            color: #F59E0B;
+            font-size: 2rem;
+        }
+        
+        .grade-a { color: #10B981; }
+        .grade-b { color: #3B82F6; }
+        .grade-c { color: #F59E0B; }
+        .grade-d { color: #F97316; }
+        .grade-e { color: #EF4444; }
+        .grade-u { color: #6B7280; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -150,9 +219,24 @@
             <div class="max-w-7xl mx-auto">
                 <h1 class="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Welcome Back, Godfrey!</h1>
                 
+                <!-- Fees Warning Alert -->
+                <div id="fees-warning" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-yellow-800">Outstanding Fees Notice</h3>
+                            <p class="text-sm text-yellow-700 mt-1">You have outstanding fees of ZWL 125,000. Results and academic records are restricted until fees are cleared.</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Stats Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 stats-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">
                         <div class="flex items-center">
                             <div class="p-2 sm:p-3 bg-blue-100 rounded-full">
                                 <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,12 +245,13 @@
                             </div>
                             <div class="ml-3 sm:ml-4">
                                 <p class="text-xs sm:text-sm font-medium text-gray-600">Average Grade</p>
-                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">85%</p>
+                                <p class="text-lg sm:text-2xl font-semibold text-gray-900 stats-number" data-target="85">0</p>
+                                <p class="text-xs text-gray-500">Grade A (Distinction)</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 stats-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1200">
                         <div class="flex items-center">
                             <div class="p-2 sm:p-3 bg-green-100 rounded-full">
                                 <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,12 +260,13 @@
                             </div>
                             <div class="ml-3 sm:ml-4">
                                 <p class="text-xs sm:text-sm font-medium text-gray-600">Attendance</p>
-                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">92%</p>
+                                <p class="text-lg sm:text-2xl font-semibold text-gray-900 stats-number" data-target="92">0</p>
+                                <p class="text-xs text-gray-500">This Term</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 stats-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
                         <div class="flex items-center">
                             <div class="p-2 sm:p-3 bg-yellow-100 rounded-full">
                                 <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,12 +275,13 @@
                             </div>
                             <div class="ml-3 sm:ml-4">
                                 <p class="text-xs sm:text-sm font-medium text-gray-600">Outstanding Fees</p>
-                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">$250</p>
+                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">ZWL 125,000</p>
+                                <p class="text-xs text-red-500">Payment Required</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 stats-card" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1200">
                         <div class="flex items-center">
                             <div class="p-2 sm:p-3 bg-purple-100 rounded-full">
                                 <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,7 +290,8 @@
                             </div>
                             <div class="ml-3 sm:ml-4">
                                 <p class="text-xs sm:text-sm font-medium text-gray-600">Next Class</p>
-                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">Math</p>
+                                <p class="text-lg sm:text-2xl font-semibold text-gray-900">Mathematics</p>
+                                <p class="text-xs text-gray-500">Room 12 - 10:25 AM</p>
                             </div>
                         </div>
                     </div>
@@ -273,53 +361,161 @@
             <div class="max-w-7xl mx-auto">
                 <h1 class="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8">Academic Results</h1>
                 
+                <!-- Fees Restriction Notice -->
+                <div id="results-restriction" class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-red-800">Results Access Restricted</h3>
+                            <p class="text-sm text-red-700 mt-1">Academic results are not available due to outstanding fees. Please clear your fees balance to view results.</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 space-y-3 sm:space-y-0">
-                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Term 1 Results</h2>
-                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base">
-                            <option>Term 1</option>
-                            <option>Term 2</option>
-                            <option>Term 3</option>
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Academic Performance</h2>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <select id="term-filter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="term1">Term 1</option>
+                                <option value="term2">Term 2</option>
+                                <option value="term3">Term 3</option>
+                            </select>
+                            <select id="year-filter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
                         </select>
+                        </div>
                     </div>
                     
                     <div class="overflow-x-auto">
+                        <div id="results-table" class="hidden">
+                            <!-- Results Summary -->
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                                    <h3 class="text-lg font-semibold text-blue-900">Student Average</h3>
+                                    <p class="text-2xl font-bold text-blue-600">81.8%</p>
+                                    <p class="text-sm text-blue-700">Grade A (Distinction)</p>
+                                </div>
+                                <div class="bg-green-50 rounded-lg p-4 text-center">
+                                    <h3 class="text-lg font-semibold text-green-900">Class Position</h3>
+                                    <p class="text-2xl font-bold text-green-600">3/45</p>
+                                    <p class="text-sm text-green-700">Top 10%</p>
+                                </div>
+                                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                                    <h3 class="text-lg font-semibold text-purple-900">Class Average</h3>
+                                    <p class="text-2xl font-bold text-purple-600">72.5%</p>
+                                    <p class="text-sm text-purple-700">Class Pass Rate: 85.2%</p>
+                                </div>
+                                <div class="bg-yellow-50 rounded-lg p-4 text-center">
+                                    <h3 class="text-lg font-semibold text-yellow-900">A Grades</h3>
+                                    <p class="text-2xl font-bold text-yellow-600">6/10</p>
+                                    <p class="text-sm text-yellow-700">Excellent Performance</p>
+                                </div>
+                            </div>
+                            
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
-                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
-                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Percentage</th>
-                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+                                        <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
+                                        <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                                        <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mark</th>
+                                        <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Position</th>
+                                        <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Comment</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Mathematics</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">A</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">88%</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">5/45</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Mathematics</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">85%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">3/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Excellent work! Strong problem-solving skills.</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">English</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">A+</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">92%</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">2/45</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">English Language</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">88%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">2/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Outstanding performance in literature and composition.</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Science</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">B+</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">85%</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">8/45</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">English Literature</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-blue-600">B</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">78%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">5/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Good understanding of texts, needs more analysis.</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">History</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">A-</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">87%</td>
-                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">6/45</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Physics</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">82%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">4/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Excellent practical skills and theoretical knowledge.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Chemistry</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-blue-600">B</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">75%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">7/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Good laboratory work, improve calculations.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Biology</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">87%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">1/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Outstanding in practical work and theory.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">History</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-blue-600">B</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">76%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">6/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Good historical analysis, improve essay writing.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Geography</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-yellow-600">C</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">68%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">8/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Satisfactory work, needs more map reading practice.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Shona</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">90%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">1/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Excellent command of language and literature.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Computer Studies</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600">A</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">89%</td>
+                                        <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">2/45</td>
+                                        <td class="px-3 sm:px-6 py-4 text-sm text-gray-600">Outstanding programming and practical skills.</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                        
+                        <div id="results-restricted" class="text-center py-12">
+                            <div class="mx-auto w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Results Temporarily Unavailable</h3>
+                            <p class="text-gray-600 mb-4">Your academic results are currently restricted due to outstanding fees.</p>
+                            <button onclick="showSection('payfees')" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-colors">
+                                Pay Fees Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -346,7 +542,7 @@
                                     <p class="text-sm text-gray-600">Due: January 15, 2024</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-lg font-semibold text-gray-900">$1,200</p>
+                                    <p class="text-lg font-semibold text-gray-900">ZWL 150,000</p>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                         Paid
                                     </span>
@@ -361,7 +557,7 @@
                                     <p class="text-sm text-gray-600">Due: April 15, 2024</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-lg font-semibold text-gray-900">$1,200</p>
+                                    <p class="text-lg font-semibold text-gray-900">ZWL 150,000</p>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                         Pending
                                     </span>
@@ -376,7 +572,7 @@
                                     <p class="text-sm text-gray-600">Due: March 1, 2024</p>
                                 </div>
                                 <div class="text-right">
-                                    <p class="text-lg font-semibold text-gray-900">$50</p>
+                                    <p class="text-lg font-semibold text-gray-900">ZWL 25,000</p>
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                         Overdue
                                     </span>
@@ -444,7 +640,9 @@
                         <form class="space-y-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Amount to Pay</label>
-                                <input type="number" value="1250" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <input type="number" id="payment-amount" value="125000" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                <p class="text-xs text-gray-500 mt-1">Amount in Zimbabwean Dollars (ZWL)</p>
+                                <p class="text-xs text-blue-600 mt-1">Outstanding Balance: ZWL <span id="outstanding-balance">125,000</span></p>
                             </div>
                             
                             <div>
@@ -473,40 +671,152 @@
                 
                 <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 space-y-3 sm:space-y-0">
-                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Weekly Schedule</h2>
-                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base">
-                            <option>Form 4A</option>
-                            <option>Form 3A</option>
-                            <option>Form 2A</option>
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Form 3A Weekly Schedule</h2>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <select id="class-filter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="form3a" selected>Form 3A</option>
+                                <option value="form3b">Form 3B</option>
+                                <option value="form3c">Form 3C</option>
+                            </select>
+                            <select id="term-filter-timetable" class="border border-gray-300 rounded-lg px-3 py-2 text-sm sm:text-base focus:ring-2 focus:ring-primary focus:border-primary">
+                                <option value="term1">Term 1</option>
+                                <option value="term2">Term 2</option>
+                                <option value="term3">Term 3</option>
                         </select>
+                        </div>
                     </div>
                     
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Monday</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tuesday</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wednesday</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thursday</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Friday</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Monday</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tuesday</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wednesday</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thursday</th>
+                                    <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Friday</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Period 1 -->
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">8:00 - 9:00</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">8:00 - 8:35</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
                                 </tr>
+                                <!-- Period 2 -->
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">9:00 - 10:00</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">8:35 - 9:10</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                </tr>
+                                <!-- Period 3 -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">9:10 - 9:45</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                </tr>
+                                <!-- Period 4 -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">9:45 - 10:20</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                </tr>
+                                <!-- Break -->
+                                <tr class="bg-blue-50">
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-900">10:20 - 10:50</td>
+                                    <td colspan="5" class="px-3 sm:px-6 py-4 text-center text-sm font-medium text-blue-900">BREAK</td>
+                                </tr>
+                                <!-- Period 5 -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">10:50 - 11:25</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                </tr>
+                                <!-- Period 6 -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">11:25 - 12:00</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                </tr>
+                                <!-- Lunch -->
+                                <tr class="bg-green-50">
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-green-900">12:00 - 13:00</td>
+                                    <td colspan="5" class="px-3 sm:px-6 py-4 text-center text-sm font-medium text-green-900">LUNCH BREAK</td>
+                                </tr>
+                                <!-- Period 7 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">13:00 - 13:35</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
+                                <!-- Period 8 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">13:35 - 14:10</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
+                                <!-- Period 9 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">14:10 - 14:45</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
+                                <!-- Period 10 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">14:45 - 15:20</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">English</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
+                                <!-- Period 11 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">15:20 - 15:55</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Geography</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
+                                <!-- Period 12 (Mon, Tue, Thu only) -->
+                                <tr>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">15:55 - 16:30</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">History</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
+                                    <td class="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 bg-gray-100 text-gray-400">SCHOOL ENDS</td>
+                                </tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Science</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Mathematics</td>
                                 </tr>
@@ -637,6 +947,34 @@
                 sidebar.classList.remove('translate-x-0');
                 sidebar.classList.add('-translate-x-full');
             }
+            
+            // Show floating icons based on section
+            setTimeout(() => {
+                switch(sectionId) {
+                    case 'results':
+                        if (!studentData.hasOutstandingFees) {
+                            const indicators = calculateSuccessIndicators();
+                            if (indicators.isSuccessful) {
+                                showFloatingIcons('success', 6);
+                            } else if (studentData.results.term1.studentAverage < 50) {
+                                showFloatingIcons('failure', 4);
+                            }
+                        }
+                        break;
+                    case 'payfees':
+                        showFloatingIcons('money', 3);
+                        break;
+                    case 'invoice':
+                        showFloatingIcons('money', 2);
+                        break;
+                    case 'overview':
+                        const indicators = calculateSuccessIndicators();
+                        if (indicators.isSuccessful) {
+                            showFloatingIcons('success', 4);
+                        }
+                        break;
+                }
+            }, 500);
         }
         
         function logout() {
@@ -670,9 +1008,375 @@
             }
         });
         
+        // Global variables and functions
+        let studentData = {
+            outstandingFees: 125000,
+            hasOutstandingFees: true,
+            results: {
+                term1: {
+                    subjects: [
+                        { name: "Mathematics", grade: "A", mark: 85, comment: "Excellent work! Strong problem-solving skills.", position: 3 },
+                        { name: "English Language", grade: "A", mark: 88, comment: "Outstanding performance in literature and composition.", position: 2 },
+                        { name: "English Literature", grade: "B", mark: 78, comment: "Good understanding of texts, needs more analysis.", position: 5 },
+                        { name: "Physics", grade: "A", mark: 82, comment: "Excellent practical skills and theoretical knowledge.", position: 4 },
+                        { name: "Chemistry", grade: "B", mark: 75, comment: "Good laboratory work, improve calculations.", position: 7 },
+                        { name: "Biology", grade: "A", mark: 87, comment: "Outstanding in practical work and theory.", position: 1 },
+                        { name: "History", grade: "B", mark: 76, comment: "Good historical analysis, improve essay writing.", position: 6 },
+                        { name: "Geography", grade: "C", mark: 68, comment: "Satisfactory work, needs more map reading practice.", position: 8 },
+                        { name: "Shona", grade: "A", mark: 90, comment: "Excellent command of language and literature.", position: 1 },
+                        { name: "Computer Studies", grade: "A", mark: 89, comment: "Outstanding programming and practical skills.", position: 2 }
+                    ],
+                    classAverage: 72.5,
+                    studentAverage: 81.8,
+                    studentPosition: 3,
+                    totalStudents: 45,
+                    passRate: 85.2
+                }
+            }
+        };
+        
+        // Calculate pass rate and success indicators
+        function calculateSuccessIndicators() {
+            const results = studentData.results.term1;
+            const subjectsWithA = results.subjects.filter(subject => subject.grade === "A").length;
+            const passRate = results.studentAverage;
+            
+            return {
+                hasHighPassRate: passRate >= 70,
+                hasFiveAs: subjectsWithA >= 5,
+                isSuccessful: passRate >= 70 && subjectsWithA >= 5
+            };
+        }
+        
+        // Floating icons functionality
+        function showFloatingIcons(type, count = 3) {
+            const icons = {
+                success: ['🎉', '🏆', '⭐', '💯', '🎊'],
+                failure: ['😞', '😔', '😢', '💔', '😭'],
+                money: ['💰', '💵', '💸', '🪙', '💎']
+            };
+            
+            const iconSet = icons[type] || icons.success;
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const icon = document.createElement('div');
+                    icon.className = `floating-icon ${type}-icon`;
+                    icon.textContent = iconSet[Math.floor(Math.random() * iconSet.length)];
+                    icon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+                    icon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+                    
+                    document.body.appendChild(icon);
+                    
+                    // Remove icon after animation
+                    setTimeout(() => {
+                        if (icon.parentNode) {
+                            icon.parentNode.removeChild(icon);
+                        }
+                    }, 3000);
+                }, i * 200);
+            }
+        }
+        
         // Initialize with overview section
         document.addEventListener('DOMContentLoaded', function() {
             showSection('overview');
+            
+            // Initialize AOS for dashboard animations
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    mirror: false,
+                    offset: 100,
+                    delay: 0
+                });
+            }
+            
+            // Stats counting animation for dashboard
+            function animateDashboardStats() {
+                const statsNumbers = document.querySelectorAll('.stats-number');
+                
+                statsNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    if (!target) return; // Skip if no target value
+                    
+                    const duration = 2000; // 2 seconds for medium speed
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        // Add % symbol for percentage values
+                        if (target <= 100) {
+                            stat.textContent = Math.floor(current) + '%';
+                        } else {
+                            stat.textContent = 'ZWL ' + Math.floor(current).toLocaleString();
+                        }
+                    }, 16);
+                });
+            }
+            
+            // Trigger stats animation when overview section is shown
+            setTimeout(() => {
+                animateDashboardStats();
+            }, 500);
+            
+            // Student data and fees management
+            let studentData = {
+                outstandingFees: 125000,
+                hasOutstandingFees: true,
+                results: {
+                    term1: {
+                        subjects: [
+                            { name: "Mathematics", grade: "A", mark: 85, comment: "Excellent work! Strong problem-solving skills.", position: 3 },
+                            { name: "English Language", grade: "A", mark: 88, comment: "Outstanding performance in literature and composition.", position: 2 },
+                            { name: "English Literature", grade: "B", mark: 78, comment: "Good understanding of texts, needs more analysis.", position: 5 },
+                            { name: "Physics", grade: "A", mark: 82, comment: "Excellent practical skills and theoretical knowledge.", position: 4 },
+                            { name: "Chemistry", grade: "B", mark: 75, comment: "Good laboratory work, improve calculations.", position: 7 },
+                            { name: "Biology", grade: "A", mark: 87, comment: "Outstanding in practical work and theory.", position: 1 },
+                            { name: "History", grade: "B", mark: 76, comment: "Good historical analysis, improve essay writing.", position: 6 },
+                            { name: "Geography", grade: "C", mark: 68, comment: "Satisfactory work, needs more map reading practice.", position: 8 },
+                            { name: "Shona", grade: "A", mark: 90, comment: "Excellent command of language and literature.", position: 1 },
+                            { name: "Computer Studies", grade: "A", mark: 89, comment: "Outstanding programming and practical skills.", position: 2 }
+                        ],
+                        classAverage: 72.5,
+                        studentAverage: 81.8,
+                        studentPosition: 3,
+                        totalStudents: 45,
+                        passRate: 85.2
+                    }
+                }
+            };
+            
+            // Calculate pass rate and success indicators
+            function calculateSuccessIndicators() {
+                const results = studentData.results.term1;
+                const subjectsWithA = results.subjects.filter(subject => subject.grade === "A").length;
+                const passRate = results.studentAverage;
+                
+                return {
+                    hasHighPassRate: passRate >= 70,
+                    hasFiveAs: subjectsWithA >= 5,
+                    isSuccessful: passRate >= 70 && subjectsWithA >= 5
+                };
+            }
+            
+            // Fees restriction functionality
+            function updateFeesRestriction() {
+                const resultsTable = document.getElementById('results-table');
+                const resultsRestricted = document.getElementById('results-restricted');
+                const resultsRestriction = document.getElementById('results-restriction');
+                const feesWarning = document.getElementById('fees-warning');
+                
+                if (studentData.hasOutstandingFees) {
+                    if (resultsTable) resultsTable.classList.add('hidden');
+                    if (resultsRestricted) resultsRestricted.classList.remove('hidden');
+                    if (resultsRestriction) resultsRestriction.classList.remove('hidden');
+                    if (feesWarning) feesWarning.classList.remove('hidden');
+                } else {
+                    if (resultsTable) resultsTable.classList.remove('hidden');
+                    if (resultsRestricted) resultsRestricted.classList.add('hidden');
+                    if (resultsRestriction) resultsRestriction.classList.add('hidden');
+                    if (feesWarning) feesWarning.classList.add('hidden');
+                }
+            }
+            
+            // Initialize fees restriction
+            updateFeesRestriction();
+            
+            // Modern filter functionality
+            const termFilter = document.getElementById('term-filter');
+            const yearFilter = document.getElementById('year-filter');
+            const classFilter = document.getElementById('class-filter');
+            const termFilterTimetable = document.getElementById('term-filter-timetable');
+            
+            // Add event listeners for filters
+            if (termFilter) {
+                termFilter.addEventListener('change', function() {
+                    console.log('Term filter changed to:', this.value);
+                    // Here you would typically fetch new data based on the filter
+                });
+            }
+            
+            if (yearFilter) {
+                yearFilter.addEventListener('change', function() {
+                    console.log('Year filter changed to:', this.value);
+                    // Here you would typically fetch new data based on the filter
+                });
+            }
+            
+            if (classFilter) {
+                classFilter.addEventListener('change', function() {
+                    console.log('Class filter changed to:', this.value);
+                    // Update the timetable title
+                    const title = document.querySelector('#timetable h2');
+                    if (title) {
+                        const classNames = {
+                            'form3a': 'Form 3A',
+                            'form3b': 'Form 3B',
+                            'form3c': 'Form 3C'
+                        };
+                        title.textContent = classNames[this.value] + ' Weekly Schedule';
+                    }
+                });
+            }
+            
+            if (termFilterTimetable) {
+                termFilterTimetable.addEventListener('change', function() {
+                    console.log('Timetable term filter changed to:', this.value);
+                    // Here you would typically fetch new timetable data
+                });
+            }
+            
+            // Payment form functionality
+            const paymentForm = document.querySelector('#payfees form');
+            if (paymentForm) {
+                paymentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const amountInput = document.getElementById('payment-amount');
+                    const amount = parseInt(amountInput.value);
+                    
+                    if (amount <= 0) {
+                        alert('Please enter a valid amount.');
+                        return;
+                    }
+                    
+                    // Show success message
+                    const button = this.querySelector('button[type="submit"]');
+                    const originalText = button.textContent;
+                    button.textContent = 'Processing Payment...';
+                    button.disabled = true;
+                    
+                    // Simulate payment processing
+                    setTimeout(() => {
+                        console.log('Before payment - Outstanding fees:', studentData.outstandingFees);
+                        console.log('Payment amount:', amount);
+                        
+                        // Update student data
+                        studentData.outstandingFees = Math.max(0, studentData.outstandingFees - amount);
+                        studentData.hasOutstandingFees = studentData.outstandingFees > 0;
+                        
+                        console.log('After payment - Outstanding fees:', studentData.outstandingFees);
+                        console.log('Has outstanding fees:', studentData.hasOutstandingFees);
+                        
+                        // Update UI
+                        updateFeesDisplay();
+                        updateFeesRestriction();
+                        
+                        // Show floating money icons
+                        showFloatingIcons('money', 5);
+                        
+                        alert(`Payment of ZWL ${amount.toLocaleString()} submitted successfully! Your fees balance has been updated.`);
+                        button.textContent = originalText;
+                        button.disabled = false;
+                        
+                        // Update the payment amount to current outstanding balance
+                        if (amountInput) {
+                            amountInput.value = studentData.outstandingFees;
+                        }
+                    }, 2000);
+                });
+            }
+            
+            // Update fees display
+            function updateFeesDisplay() {
+                console.log('updateFeesDisplay called - Outstanding fees:', studentData.outstandingFees);
+                
+                // Update stats card
+                const feesElement = document.querySelector('.stats-card:nth-child(3) .stats-number');
+                if (feesElement) {
+                    feesElement.textContent = `ZWL ${studentData.outstandingFees.toLocaleString()}`;
+                    console.log('Updated stats card to:', feesElement.textContent);
+                }
+                
+                // Update outstanding balance in payment section
+                const outstandingBalance = document.getElementById('outstanding-balance');
+                if (outstandingBalance) {
+                    outstandingBalance.textContent = studentData.outstandingFees.toLocaleString();
+                    console.log('Updated outstanding balance to:', outstandingBalance.textContent);
+                }
+                
+                // Update payment amount field
+                const paymentAmount = document.getElementById('payment-amount');
+                if (paymentAmount) {
+                    paymentAmount.value = studentData.outstandingFees;
+                }
+                
+                // Update fees warning
+                const feesWarning = document.getElementById('fees-warning');
+                if (feesWarning) {
+                    if (studentData.hasOutstandingFees) {
+                        feesWarning.querySelector('p').textContent = `You have outstanding fees of ZWL ${studentData.outstandingFees.toLocaleString()}. Results and academic records are restricted until fees are cleared.`;
+                        feesWarning.classList.remove('hidden');
+                    } else {
+                        feesWarning.classList.add('hidden');
+                    }
+                }
+                
+                // Update stats card text
+                const feesCardText = document.querySelector('.stats-card:nth-child(3) .text-sm');
+                if (feesCardText) {
+                    if (studentData.hasOutstandingFees) {
+                        feesCardText.textContent = 'Payment Required';
+                    } else {
+                        feesCardText.textContent = 'Fees Cleared';
+                    }
+                }
+            }
+            
+            // Floating icons functionality
+            function showFloatingIcons(type, count = 3) {
+                const icons = {
+                    success: ['🎉', '🏆', '⭐', '💯', '🎊'],
+                    failure: ['😞', '😔', '😢', '💔', '😭'],
+                    money: ['💰', '💵', '💸', '🪙', '💎']
+                };
+                
+                const iconSet = icons[type] || icons.success;
+                
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const icon = document.createElement('div');
+                        icon.className = `floating-icon ${type}-icon`;
+                        icon.textContent = iconSet[Math.floor(Math.random() * iconSet.length)];
+                        icon.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+                        icon.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+                        
+                        document.body.appendChild(icon);
+                        
+                        // Remove icon after animation
+                        setTimeout(() => {
+                            if (icon.parentNode) {
+                                icon.parentNode.removeChild(icon);
+                            }
+                        }, 3000);
+                    }, i * 200);
+                }
+            }
+            
+            // Show floating icons based on results
+            function showResultsIcons() {
+                const indicators = calculateSuccessIndicators();
+                
+                if (indicators.isSuccessful) {
+                    showFloatingIcons('success', 8);
+                } else if (studentData.results.term1.studentAverage < 50) {
+                    showFloatingIcons('failure', 5);
+                }
+            }
+            
+            // Initialize floating icons for results
+            setTimeout(() => {
+                showResultsIcons();
+            }, 1000);
         });
     </script>
 </body>
