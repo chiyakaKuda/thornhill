@@ -9,6 +9,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Stats card animations */
+      .stats-card {
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      
+      .stats-card.aos-animate {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      
+      .stats-number {
+        transition: all 0.3s ease;
+      }
+      
+      /* Pulse effect for stats cards */
+      @keyframes pulse-glow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(53, 23, 23, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(53, 23, 23, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(53, 23, 23, 0);
+        }
+      }
+      
+      .stats-card:hover {
+        transform: translateY(-5px);
+        animation: pulse-glow 1.5s infinite;
+      }
+    </style>
     <script>
       tailwind.config = {
         theme: {
@@ -174,7 +209,7 @@
           <!-- Item 1: Welcome -->
           <div class="duration-700 ease-in-out" data-carousel-item>
             <div class="absolute inset-0">
-              <img src="/assets/img/1.jpg" alt="School Building" class="absolute block w-full h-full object-cover blur-sm" />
+              <img src="/assets/img/1.png" alt="School Building" class="absolute block w-full h-full object-cover blur-sm" />
               <div class="absolute inset-0 bg-primary/60"></div>
             </div>
             <div class="relative z-10 flex h-full items-center justify-center">
@@ -215,7 +250,7 @@
           <!-- Item 3: Student Life -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <div class="absolute inset-0">
-              <img src="/assets/img/3.jpg" alt="Student Life" class="absolute block w-full h-full object-cover blur-sm" />
+              <img src="/assets/img/3.png" alt="Student Life" class="absolute block w-full h-full object-cover blur-sm" />
               <div class="absolute inset-0 bg-primary/60"></div>
             </div>
             <div class="relative z-10 flex h-full items-center justify-center">
@@ -235,7 +270,7 @@
           <!-- Item 4: Community -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <div class="absolute inset-0">
-              <img src="/assets/img/4.jpg" alt="School Community" class="absolute block w-full h-full object-cover blur-sm" />
+              <img src="/assets/img/4.png" alt="School Community" class="absolute block w-full h-full object-cover blur-sm" />
               <div class="absolute inset-0 bg-primary/60"></div>
             </div>
             <div class="relative z-10 flex h-full items-center justify-center">
@@ -327,12 +362,12 @@
               At Thornhill High School, we don't just educate—we inspire. Our institution stands as a beacon of innovation, where traditional values meet cutting-edge learning approaches. We believe every student has the potential to change the world.
             </p>
             <div class="grid grid-cols-2 gap-4 pt-4">
-              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                <div class="text-2xl font-bold text-primary">50+</div>
+              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100 stats-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">
+                <div class="text-2xl font-bold text-primary stats-number" data-target="50">0</div>
                 <div class="text-sm text-gray-600">Years of Excellence</div>
               </div>
-              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100" data-aos="zoom-in" data-aos-delay="400">
-                <div class="text-2xl font-bold text-primary">95%</div>
+              <div class="rounded-lg bg-white p-4 shadow-sm border border-gray-100 stats-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
+                <div class="text-2xl font-bold text-primary stats-number" data-target="95">0</div>
                 <div class="text-sm text-gray-600">Success Rate</div>
               </div>
             </div>
@@ -483,7 +518,7 @@
           <!-- Instagram Post 1: Sports -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basketball Team Victory" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="/assets/img/sport.png" alt="Basketball Team Victory" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Sports</span>
               </div>
@@ -531,7 +566,7 @@
           <!-- Instagram Post 2: Arts & Culture -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="/assets/img/art.png" alt="Art Exhibition" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Arts</span>
               </div>
@@ -579,7 +614,7 @@
           <!-- Instagram Post 3: Academic Achievement -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Academic Awards" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="/assets/img/academic.png" alt="Academic Awards" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Academics</span>
               </div>
@@ -627,7 +662,7 @@
           <!-- Instagram Post 4: Community Service -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Service" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="/assets/img/community.png" alt="Community Service" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Service</span>
               </div>
@@ -675,7 +710,7 @@
           <!-- Instagram Post 5: Music & Drama -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music Performance" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="/assets/img/music.png" alt="Music Performance" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Music</span>
               </div>
@@ -723,7 +758,7 @@
           <!-- Instagram Post 6: Science Fair -->
           <div class="instagram-post rounded-2xl bg-white shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="600">
             <div class="relative">
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science Fair" class="h-64 w-full rounded-t-2xl object-cover" />
+              <img src="assets/img/1.png" alt="Science Fair" class="h-64 w-full rounded-t-2xl object-cover" />
               <div class="absolute top-3 left-3">
                 <span class="rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">Science</span>
               </div>
@@ -790,7 +825,7 @@
                     <!-- News Item 1 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Academic Excellence" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/academic.png" alt="Academic Excellence" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -811,7 +846,7 @@
                                 <!-- News Item 2 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sports Achievement" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/sport.png" alt="Sports Achievement" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -832,7 +867,7 @@
                                 <!-- News Item 3 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Art Exhibition" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/art.png" alt="Art Exhibition" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -861,7 +896,7 @@
                     <!-- Event Item 1 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Spring Concert" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/music.png" alt="Spring Concert" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -882,7 +917,7 @@
                                 <!-- Event Item 2 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Science Fair" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/3.png" alt="Science Fair" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -903,7 +938,7 @@
                                 <!-- Event Item 3 -->
                     <article class="group flex gap-6 rounded-2xl bg-white p-6 shadow-lg transition hover:shadow-xl" data-aos="fade-up" data-aos-delay="600">
               <div class="flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Debate Competition" class="h-24 w-24 rounded-xl object-cover" />
+                <img src="assets/img/4.png" alt="Debate Competition" class="h-24 w-24 rounded-xl object-cover" />
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-3 mb-2">
@@ -1128,12 +1163,12 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script>
-      // Initialize AOS
+      // Initialize AOS with medium speed
       AOS.init({
-        duration: 800,
+        duration: 1200,
         easing: 'ease-out-cubic',
-        once: false,
-        mirror:true,
+        once: true,
+        mirror: false,
         offset: 100,
         delay: 0
       });
@@ -1164,6 +1199,54 @@
       const yearElement = document.getElementById('year');
       if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+      }
+
+      // Stats counting animation
+      function animateStats() {
+        const statsNumbers = document.querySelectorAll('.stats-number');
+        
+        statsNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          const duration = 2000; // 2 seconds for medium speed
+          const increment = target / (duration / 16); // 60fps
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            
+            // Add the + symbol for the first stat
+            if (stat.getAttribute('data-target') === '50') {
+              stat.textContent = Math.floor(current) + '+';
+            } else {
+              stat.textContent = Math.floor(current) + '%';
+            }
+          }, 16);
+        });
+      }
+
+      // Trigger stats animation when they come into view
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStats();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe the stats section
+      const statsSection = document.querySelector('.stats-card');
+      if (statsSection) {
+        statsObserver.observe(statsSection);
       }
 
       // Instagram-style like functionality
