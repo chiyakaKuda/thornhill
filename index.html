@@ -1207,7 +1207,7 @@
         
         statsNumbers.forEach(stat => {
           const target = parseInt(stat.getAttribute('data-target'));
-          const duration = 10000; // 2 seconds for medium speed
+          const duration = 5000; // 2 seconds for medium speed
           const increment = target / (duration / 16); // 60fps
           let current = 0;
           
@@ -1300,5 +1300,3 @@
     </script>
   </body>
   </html>
-
-
