@@ -1207,7 +1207,7 @@
         
         statsNumbers.forEach(stat => {
           const target = parseInt(stat.getAttribute('data-target'));
-          const duration = 2000; // 2 seconds for medium speed
+          const duration = 10000; // 2 seconds for medium speed
           const increment = target / (duration / 16); // 60fps
           let current = 0;
           
@@ -1230,7 +1230,7 @@
 
       // Trigger stats animation when they come into view
       const observerOptions = {
-        threshold: 0.5,
+        threshold: 1.5,
         rootMargin: '0px 0px -100px 0px'
       };
 
